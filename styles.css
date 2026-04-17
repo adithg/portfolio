@@ -194,15 +194,18 @@ body {
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  background-color: inherit !important;
 }
 
 .project-block.featured {
   grid-column: 1 / -1;
   padding: 2.5rem;
+  background-color: #e3f2fd !important;
 }
 
 .project-block.large {
   grid-column: 1 / -1;
+  background-color: #f3e5f5 !important;
 }
 
 .project-block h3 {
