@@ -1,0 +1,17 @@
+{
+  "buildCommand": "echo 'Static site'",
+  "installCommand": "echo 'No dependencies'",
+  "outputDirectory": ".",
+  "env": {},
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
+}

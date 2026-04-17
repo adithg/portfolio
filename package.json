@@ -1,0 +1,18 @@
+{
+  "name": "adith-portfolio",
+  "version": "1.0.0",
+  "description": "Adith Gangalakunta's personal portfolio — Swiss minimalism design",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Static site — no build step needed'"
+  },
+  "keywords": [
+    "portfolio",
+    "software-engineer",
+    "ai-ml",
+    "full-stack"
+  ],
+  "author": "Adith Gangalakunta",
+  "license": "MIT"
+}
