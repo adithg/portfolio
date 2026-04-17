@@ -1,5 +1,5 @@
 /* ============================================================
-   Swiss Minimalism — Clean, White, Tasteful Colors
+   Swiss Minimalism — White, Clean, Asymmetrical
    ============================================================ */
 
 :root {
@@ -8,17 +8,10 @@
   --text-secondary: #666666;
   --text-tertiary: #999999;
   --border: #e0e0e0;
-
-  /* Pastel colors */
-  --blue: #e3f2fd;
-  --pink: #fce4ec;
-  --purple: #f3e5f5;
-  --green: #e8f5e9;
-  --orange: #fff3e0;
+  --light-bg: #fafafa;
 
   --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
-  --max-width: 900px;
-  --spacing: 1.5rem;
+  --max-width: 920px;
 }
 
 * {
@@ -29,11 +22,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #ffffff !important;
 }
 
 body {
   font-family: var(--font);
-  background-color: var(--bg);
+  background-color: #ffffff !important;
   color: var(--text-primary);
   line-height: 1.6;
   font-size: 16px;
@@ -52,7 +46,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  background-color: var(--bg);
+  background-color: #ffffff !important;
   border-bottom: 1px solid transparent;
   z-index: 100;
   transition: border-color 0.3s ease;
@@ -76,7 +70,6 @@ body {
   font-weight: 700;
   color: var(--text-primary);
   text-decoration: none;
-  letter-spacing: 0;
 }
 
 .nav-links {
@@ -101,23 +94,24 @@ body {
    ============================================================ */
 
 .hero {
-  padding: 4rem 2rem 3rem;
+  padding: 5rem 2rem 4rem;
+  background-color: #ffffff !important;
 }
 
 .hero-content h1 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
-  max-width: 800px;
+  max-width: 850px;
 }
 
 .hero-subtitle {
   font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.8;
-  max-width: 700px;
-  margin-bottom: 2rem;
+  max-width: 750px;
+  margin-bottom: 2.5rem;
 }
 
 .hero-ctas {
@@ -140,7 +134,7 @@ body {
 
 .btn-primary {
   background-color: var(--text-primary);
-  color: var(--bg);
+  color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -148,7 +142,7 @@ body {
 }
 
 .btn-secondary {
-  background-color: var(--bg);
+  background-color: #ffffff;
   color: var(--text-primary);
   border: 1px solid var(--border);
 }
@@ -162,7 +156,12 @@ body {
    ============================================================ */
 
 section {
-  padding: 3.5rem 2rem;
+  padding: 4rem 2rem;
+  background-color: #ffffff !important;
+}
+
+section:nth-child(even) {
+  background-color: var(--light-bg) !important;
 }
 
 h2 {
@@ -187,12 +186,8 @@ h4 {
    About Section
    ============================================================ */
 
-.about {
-  background-color: #fafafa;
-}
-
 .about-grid {
-  max-width: 700px;
+  max-width: 750px;
 }
 
 .about-text p {
@@ -202,20 +197,17 @@ h4 {
   line-height: 1.8;
 }
 
-.about-text p:last-child {
-  margin-bottom: 0;
-}
-
 /* ============================================================
    Work Section
    ============================================================ */
 
 .featured {
-  background-color: #f5f5f5;
-  padding: 2rem;
+  background-color: #ffffff !important;
+  border: 1px solid var(--border);
+  padding: 2.5rem;
   border-radius: 8px;
-  margin-bottom: 3rem;
-  max-width: 700px;
+  margin-bottom: 4rem;
+  max-width: 780px;
 }
 
 .featured h3 {
@@ -236,28 +228,29 @@ h4 {
 
 .tech-tags span {
   display: inline-block;
-  background-color: var(--bg);
+  background-color: #ffffff;
   color: var(--text-secondary);
-  padding: 0.4rem 0.9rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 4px;
   font-size: 0.85rem;
   font-weight: 500;
   border: 1px solid var(--border);
 }
 
-/* Projects Grid */
+/* Projects Grid - Asymmetrical */
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .project-card {
   padding: 2rem;
   border-radius: 8px;
   transition: all 0.2s ease;
+  background-color: #ffffff !important;
 }
 
 .project-card:hover {
@@ -267,6 +260,7 @@ h4 {
 
 .project-card h4 {
   margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 .project-award {
@@ -283,7 +277,7 @@ h4 {
 }
 
 /* ============================================================
-   Experience Section
+   Experience Section - Left-aligned
    ============================================================ */
 
 .section-subtitle {
@@ -294,12 +288,12 @@ h4 {
 .experience {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   max-width: 800px;
 }
 
 .exp-item {
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -310,6 +304,7 @@ h4 {
 
 .exp-item h4 {
   margin-bottom: 0.25rem;
+  color: var(--text-primary);
 }
 
 .exp-role {
@@ -326,29 +321,30 @@ h4 {
 }
 
 /* ============================================================
-   Skills Section
+   Skills Section - Grid with varied widths
    ============================================================ */
 
 .skills {
-  background-color: #fafafa;
+  background-color: #ffffff !important;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   max-width: 1000px;
 }
 
 .skill-block {
   padding: 1.5rem;
-  background-color: var(--bg);
+  background-color: var(--light-bg);
   border-radius: 8px;
   border: 1px solid var(--border);
 }
 
 .skill-block h4 {
   margin-bottom: 0.75rem;
+  color: var(--text-primary);
 }
 
 .skill-block p {
@@ -363,7 +359,7 @@ h4 {
 
 .contact {
   text-align: center;
-  background-color: #fafafa;
+  background-color: #ffffff !important;
 }
 
 .contact h2 {
@@ -374,7 +370,7 @@ h4 {
   font-size: 1.05rem;
   color: var(--text-secondary);
   max-width: 600px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 2.5rem;
   line-height: 1.8;
 }
 
@@ -389,7 +385,7 @@ h4 {
   display: inline-block;
   padding: 0.8rem 1.8rem;
   background-color: var(--text-primary);
-  color: var(--bg);
+  color: #ffffff;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
@@ -406,7 +402,7 @@ h4 {
    ============================================================ */
 
 .footer {
-  background-color: var(--bg);
+  background-color: #ffffff !important;
   border-top: 1px solid var(--border);
   padding: 2rem;
   text-align: center;
@@ -419,16 +415,16 @@ h4 {
    ============================================================ */
 
 @media (max-width: 768px) {
-  .nav-links {
-    gap: 1.5rem;
-  }
-
-  h1 {
+  .hero-content h1 {
     font-size: 2rem;
   }
 
   h2 {
     font-size: 1.8rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
   }
 
   .hero-ctas {
@@ -455,5 +451,9 @@ h4 {
 
   section {
     padding: 2.5rem 1.5rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
   }
 }
