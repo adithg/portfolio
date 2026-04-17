@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Adith Gangalakunta — Full-stack engineer & AI builder. Shipped RAG systems, founded a startup, won hackathons.">
-  <meta name="theme-color" content="#ffffff">
-  <title>Adith Gangalakunta — Software Engineer & AI Builder</title>
+  <meta name="description" content="Adith Gangalakunta — Full-stack engineer & AI builder. Founded a startup at BuildSpace S5, shipped RAG systems, won hackathons.">
+  <title>Adith Gangalakunta</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">AG</a>
+      <a href="/" class="logo">AG</a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#work">Work</a>
@@ -27,30 +26,12 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <h1>I'm Adith — a full-stack engineer and AI builder based in Texas.</h1>
-          <p class="hero-subtitle">I founded a startup at BuildSpace S5 (A16Z), shipped a RAG system serving 15K+ users, and won top 3 at multiple hackathon competitions. I move fast, ship frequently, and love solving real problems.</p>
-          <div class="hero-ctas">
-            <a href="#work" class="btn btn-primary">View my work</a>
-            <a href="#contact" class="btn btn-secondary">Get in touch</a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="placeholder-image">
-            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                </linearGradient>
-              </defs>
-              <rect width="400" height="500" fill="url(#grad)"/>
-              <circle cx="200" cy="200" r="80" fill="#ffffff" opacity="0.1"/>
-              <circle cx="100" cy="100" r="50" fill="#ffffff" opacity="0.1"/>
-              <circle cx="300" cy="400" r="60" fill="#ffffff" opacity="0.1"/>
-            </svg>
-          </div>
+      <div class="hero-content">
+        <h1>I'm Adith — a full-stack engineer and AI builder based in Texas.</h1>
+        <p class="hero-subtitle">I started by building full-stack applications, but now I focus on shipping AI products that work. I founded a startup at BuildSpace S5 (A16Z), shipped a RAG system serving 15K+ users, and won top 3 at hackathons like Goldman Sachs and UC Berkeley.</p>
+        <div class="hero-ctas">
+          <a href="#work" class="btn btn-primary">View my work</a>
+          <a href="#contact" class="btn btn-secondary">Get in touch</a>
         </div>
       </div>
     </div>
@@ -59,10 +40,12 @@
   <!-- About Section -->
   <section id="about" class="about">
     <div class="container">
-      <div class="about-content">
-        <h2>About</h2>
-        <p>CS senior at UT Dallas, graduating May 2026. I've been building products since day one — starting with full-stack internships, founding GGWP at A16Z's BuildSpace S5, and shipping award-winning projects at hackathons like Goldman Sachs, UC Berkeley, and HackUNT.</p>
-        <p>I don't just learn technology in classes — I build with it. React, Python, AI models, databases, APIs. Whatever the problem needs. I learn by shipping, and I'm most excited about roles where I can move fast and make an impact immediately.</p>
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>CS senior at UT Dallas, graduating May 2026. I've been building products since day one — shipped full-stack applications, founded GGWP at BuildSpace S5, and delivered award-winning hackathon projects.</p>
+          <p>I don't just learn technology in classes — I build with it. React, Python, AI models, databases, APIs. Whatever the problem needs. I move fast, ship frequently, and learn from real users.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -70,90 +53,77 @@
   <!-- Work Section -->
   <section id="work" class="work">
     <div class="container">
-      <h2>Work & Projects</h2>
+      <h2>Work</h2>
 
-      <!-- Featured Project -->
-      <div class="featured-project">
-        <div class="featured-content">
-          <span class="featured-label">Featured</span>
-          <h3>Archive Assistant</h3>
-          <p>A RAG system built with LangChain and Pinecone serving 15,000+ users with authentic meditation guidance through direct archival retrieval.</p>
-          <div class="featured-tech">
-            <span>LangChain</span>
-            <span>Pinecone</span>
-            <span>Python</span>
-            <span>RAG</span>
-          </div>
-        </div>
-        <div class="featured-badge" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-          15K+<br/>Users
+      <!-- Featured -->
+      <div class="featured">
+        <h3>Archive Assistant</h3>
+        <p>A RAG system built with LangChain and Pinecone serving 15,000+ users with authentic meditation guidance through direct archival retrieval.</p>
+        <div class="tech-tags">
+          <span>LangChain</span>
+          <span>Pinecone</span>
+          <span>Python</span>
+          <span>RAG</span>
         </div>
       </div>
 
       <!-- Projects Grid -->
-      <h3 class="section-subtitle">Hackathon Wins</h3>
       <div class="projects-grid">
-        <div class="project-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-          <div class="project-badge">2nd Place</div>
+        <div class="project-card" style="background-color: #e3f2fd;">
           <h4>Take10</h4>
+          <p class="project-award">2nd Place • HackUNT 2023</p>
           <p>Stress-tracking app using Hume.AI facial analysis to detect student stress and dynamically reprioritize tasks.</p>
-          <div class="project-meta">HackUNT 2023 • 100+ teams</div>
         </div>
 
-        <div class="project-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-          <div class="project-badge">3rd Place</div>
+        <div class="project-card" style="background-color: #fce4ec;">
           <h4>TrendSent</h4>
+          <p class="project-award">3rd Place • Goldman Sachs Challenge 2023</p>
           <p>ML-powered DCF projector using SEC filings and sentiment analysis for company financial intelligence.</p>
-          <div class="project-meta">Goldman Sachs Challenge • 1,200+ teams</div>
         </div>
 
-        <div class="project-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-          <div class="project-badge">3rd Place</div>
+        <div class="project-card" style="background-color: #f3e5f5;">
           <h4>Midas</h4>
+          <p class="project-award">3rd Place • UC Berkeley Infiniti 2023</p>
           <p>AI crypto trading system combining facial expression analysis with financial data for intelligent decisions.</p>
-          <div class="project-meta">UC Berkeley Infiniti • 1,600+ teams</div>
         </div>
 
-        <div class="project-card" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-          <div class="project-badge">3rd Place</div>
+        <div class="project-card" style="background-color: #e8f5e9;">
           <h4>DrugRadar</h4>
+          <p class="project-award">3rd Place • UTD Axxess Challenge 2023</p>
           <p>NLP drug analyzer using ChatGPT to check interactions and side effects for informed healthcare decisions.</p>
-          <div class="project-meta">UTD Axxess Challenge • 300+ teams</div>
+        </div>
+
+        <div class="project-card" style="background-color: #fff3e0;">
+          <h4>GGWP</h4>
+          <p class="project-award">Founder • BuildSpace S5 2024</p>
+          <p>Social gaming platform selected for A16Z's BuildSpace S5 cohort. 150+ beta users. React Native, Django, Supabase.</p>
         </div>
       </div>
 
       <!-- Experience -->
       <h3 class="section-subtitle">Experience</h3>
-      <div class="experience-list">
+      <div class="experience">
         <div class="exp-item">
-          <div class="exp-header">
-            <h4>GGWP — Founder</h4>
-            <span class="exp-date">BuildSpace S5, A16Z • 2024</span>
-          </div>
-          <p>Co-founded social gaming platform selected for A16Z's competitive BuildSpace S5 cohort. Built with React Native, Django, Supabase. Achieved 150+ beta users.</p>
+          <h4>The Way & True Ventures</h4>
+          <p class="exp-role">Software Developer & VC Fellow — Summer 2025</p>
+          <p>Built Archive Assistant RAG using LangChain & Pinecone serving 15K+ users. Assessed portfolio companies for strategic AI implementation opportunities.</p>
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
-            <h4>The Way & True Ventures — Software Developer</h4>
-            <span class="exp-date">Remote • Summer 2025</span>
-          </div>
-          <p>Built Archive Assistant RAG using LangChain & Pinecone serving 15K+ users. Assessed portfolio companies for AI implementation opportunities as VC Fellow.</p>
+          <h4>GGWP</h4>
+          <p class="exp-role">Founder — BuildSpace S5, A16Z • 2024</p>
+          <p>Co-founded social gaming platform selected for A16Z's competitive BuildSpace S5 cohort. Built with React Native, Django, Supabase. 150+ beta users.</p>
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
-            <h4>Portages Health — Product Developer</h4>
-            <span class="exp-date">Remote • Summer 2024</span>
-          </div>
-          <p>Developed mental health tracking solution through customer interviews (40+ users). Built React Native + Firebase solution addressing real user needs.</p>
+          <h4>Portages Health</h4>
+          <p class="exp-role">Product Developer — Summer 2024</p>
+          <p>Developed mental health tracking solution through customer interviews (40+ users). Built React Native + Firebase product addressing real user needs.</p>
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
-            <h4>HelloAppt — Full Stack Developer</h4>
-            <span class="exp-date">Dallas, TX • Summer 2023</span>
-          </div>
+          <h4>HelloAppt</h4>
+          <p class="exp-role">Full Stack Developer — Summer 2023</p>
           <p>Built scheduling system for 30+ service providers using Django & MERN. Architected for scale to hundreds of customers.</p>
         </div>
       </div>
@@ -163,31 +133,31 @@
   <!-- Skills Section -->
   <section class="skills">
     <div class="container">
-      <h2>Skills & Tools</h2>
+      <h2>Skills</h2>
       <div class="skills-grid">
-        <div class="skill-card">
+        <div class="skill-block">
           <h4>Languages</h4>
           <p>Python, JavaScript, Java, C/C++, Go, SQL, Swift</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-block">
           <h4>Frontend</h4>
           <p>React, React Native, HTML/CSS, Tailwind, Next.js</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-block">
           <h4>Backend</h4>
-          <p>Node.js, Express, Django, PostgreSQL, MongoDB</p>
+          <p>Node.js, Express, Django, PostgreSQL, MongoDB, Firebase, Supabase</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-block">
           <h4>AI/ML</h4>
-          <p>LangChain, Pinecone, PyTorch, TensorFlow, GPT APIs</p>
+          <p>LangChain, Pinecone, PyTorch, TensorFlow, Scikit-learn, GPT APIs</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-block">
           <h4>DevOps</h4>
-          <p>Docker, Kubernetes, GCP, Linux, Git, Shell</p>
+          <p>Docker, Kubernetes, GCP, Linux, Git, Shell scripting</p>
         </div>
-        <div class="skill-card">
-          <h4>Other</h4>
-          <p>Figma, JIRA, Agile/Scrum, Firebase, Supabase</p>
+        <div class="skill-block">
+          <h4>Tools</h4>
+          <p>Figma, JIRA, Agile/Scrum, VS Code, CLI</p>
         </div>
       </div>
     </div>
@@ -196,15 +166,13 @@
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="container">
-      <div class="contact-content">
-        <h2>Let's Connect</h2>
-        <p>Building something interesting? Looking to collaborate? Or just want to chat about tech, AI, and shipping products? Let's talk.</p>
-        <div class="contact-links">
-          <a href="mailto:adithg@gmail.com" class="contact-btn">Email me</a>
-          <a href="https://github.com/adithg" target="_blank" class="contact-btn">GitHub</a>
-          <a href="https://linkedin.com/in/adithg" target="_blank" class="contact-btn">LinkedIn</a>
-          <a href="https://devpost.com/adithg" target="_blank" class="contact-btn">Devpost</a>
-        </div>
+      <h2>Let's connect</h2>
+      <p>Building something interesting? Looking to collaborate? Or just want to chat about tech and shipping products? I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:adithg@gmail.com">Email</a>
+        <a href="https://github.com/adithg" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/adithg" target="_blank">LinkedIn</a>
+        <a href="https://devpost.com/adithg" target="_blank">Devpost</a>
       </div>
     </div>
   </section>
@@ -212,12 +180,12 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>Adith Gangalakunta © 2025 • Built with HTML, CSS, and a love for shipping</p>
+      <p>Adith Gangalakunta © 2025</p>
     </div>
   </footer>
 
   <script>
-    // Smooth scroll
+    // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -228,9 +196,14 @@
       });
     });
 
-    // Navbar on scroll
+    // Navbar background on scroll
     window.addEventListener('scroll', () => {
-      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     });
   </script>
 </body>
