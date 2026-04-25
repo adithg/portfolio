@@ -5,7 +5,7 @@ const { useState, useEffect, useRef, useMemo, useCallback } = React;
 function useTheme() {
   const [theme, setTheme] = useState(() => {
     if (typeof window === "undefined") return "light";
-    return localStorage.getItem("theme") || "light";
+    return localStorage.getItem("theme") || "dark";
   });
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
