@@ -2,7 +2,7 @@
 const PROFILE = {
   name: "Adith Gangalakunta",
   role: "CS @ UT Dallas · Builder · Founder",
-  blurb: "Computer Science senior at UT Dallas building AI products, full-stack tools, and the occasional weekend hackathon win. Most recently a Software Developer & VC Fellow at True Ventures.",
+  blurb: "Computer Science senior at UT Dallas building AI products, full-stack tools, and the occasional hackathon win. Most recently a Software Developer & VC Fellow at True Ventures.",
   email: "adithg@gmail.com",
   phone: "945-344-9611",
   links: {
@@ -26,7 +26,7 @@ const EXPERIENCE = [
     when: "Summer 2025",
     role: "Software Developer & VC Fellow",
     org: "The Way · True Ventures",
-    loc: "Remote",
+    loc: "San Francisco, CA",
     blurb: [
       "Shipped ",
       { pop: "Archive Assistant" },
