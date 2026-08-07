@@ -343,22 +343,6 @@ section {
   min-height: 0;
 }
 
-/* accordion gallery (react-bits) — project index */
-.work-gallery {
-  margin-bottom: 56px;
-}
-
-.work-gallery .ag-panel__text {
-  font-family: var(--mono);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.work-gallery .ag-panel {
-  border: 1px solid var(--line);
-  background: var(--bg-raise);
-}
-
 .scroll-stack-card.panel {
   height: auto;
   min-height: 20rem;
@@ -642,10 +626,38 @@ section {
   gap: 24px;
 }
 
-.skill-group {
+/* skill boxes are react-bits PixelCards: red/grey pixel noise on hover */
+.pixel-card.skill-group {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  display: block;
+  position: relative;
   border: 1px solid var(--line);
+  border-radius: 0;
   background: var(--bg-raise);
   padding: 28px;
+  user-select: auto;
+}
+
+.pixel-card.skill-group:hover {
+  border-color: #3d3d3d;
+}
+
+.pixel-card.skill-group::before {
+  display: none;
+}
+
+.pixel-card.skill-group .pixel-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.skill-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .skill-group h3 {
@@ -689,7 +701,7 @@ section {
   transition-delay: calc(var(--i) * 35ms);
 }
 
-.skill-group.in .tag {
+.reveal.in .skill-group .tag {
   opacity: 1;
   transform: none;
 }
@@ -699,22 +711,23 @@ section {
 }
 
 /* ============================================================
-   04 about (react-bits ScrollReveal)
+   04 about
    ============================================================ */
-.about-reveal {
+.about-bio {
   max-width: 68ch;
 }
 
-.about-reveal .scroll-reveal {
-  margin: 0 0 22px;
-}
-
-.about-reveal .scroll-reveal-text {
+.about-bio p {
   font-family: var(--mono);
-  font-size: clamp(16px, 2vw, 23px);
+  font-size: clamp(16px, 2vw, 22px);
   line-height: 1.65;
   font-weight: 500;
   color: var(--txt);
+}
+
+.about-bio p + p {
+  margin-top: 20px;
+  color: var(--dim);
 }
 
 .type-line {
@@ -842,9 +855,6 @@ footer .wrap {
     border-right: 0;
     border-bottom: 1px solid var(--line);
     min-height: 220px;
-  }
-  .work-gallery .accordion-gallery {
-    flex-direction: column;
   }
   .exp-grid {
     display: block;

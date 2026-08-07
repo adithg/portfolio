@@ -9,8 +9,7 @@ import SplitText from './components/SplitText';
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack';
 import ScrollFloat from './components/ScrollFloat';
 import ScrollVelocity from './components/ScrollVelocity';
-import ScrollReveal from './components/ScrollReveal';
-import AccordionGallery from './components/AccordionGallery';
+import PixelCard from './components/PixelCard';
 import Viz from './components/Viz';
 import { PROFILE, WORK, EXPERIENCE, SKILLS, ABOUT } from './data';
 
@@ -190,20 +189,6 @@ export default function App() {
         <section id="work">
           <div className="wrap">
             <SecHead num="01" title="selected work" />
-            <Reveal className="work-gallery">
-              <AccordionGallery
-                items={WORK.map(w => ({ image: w.gallery, label: w.name.toLowerCase(), link: w.links[0].href }))}
-                defaultIndex={0}
-                accentColor={ACCENT}
-                overlayColor="#0d0d0d"
-                textColor="#f4f4f4"
-                height={430}
-                gap={8}
-                radius={0}
-                expandRatio={0.55}
-                grayscale={false}
-              />
-            </Reveal>
             <ScrollStack
               useWindowScroll
               itemDistance={60}
@@ -213,7 +198,7 @@ export default function App() {
               baseScale={0.88}
             >
               {WORK.map((w, i) => (
-                <ScrollStackItem key={w.name} itemClassName="panel">
+                <ScrollStackItem key={w.name} itemClassName="panel cursor-target">
                   <Viz type={w.viz} />
                   <div className="meta">
                     <span className="panel-idx">{String(i + 1).padStart(2, '0')}</span>
@@ -251,18 +236,22 @@ export default function App() {
           <div className="wrap">
             <div className="skills-grid">
               {SKILLS.map(sk => (
-                <Reveal className="skill-group" key={sk.group}>
-                  <h3>
-                    <b>&gt;</b>
-                    {sk.group}
-                  </h3>
-                  <div className="skill-tags">
-                    {sk.items.map((item, idx) => (
-                      <span className="tag" style={{ '--i': idx }} key={item}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                <Reveal key={sk.group}>
+                  <PixelCard className="skill-group" gap={6} speed={30} colors="#242424,#4f4f4f,#ff4b33" noFocus>
+                    <div className="skill-inner">
+                      <h3>
+                        <b>&gt;</b>
+                        {sk.group}
+                      </h3>
+                      <div className="skill-tags">
+                        {sk.items.map((item, idx) => (
+                          <span className="tag" style={{ '--i': idx }} key={item}>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </PixelCard>
                 </Reveal>
               ))}
             </div>
@@ -272,14 +261,10 @@ export default function App() {
         <section id="about">
           <div className="wrap">
             <SecHead num="04" title="about" />
-            <div className="about-reveal">
-              <ScrollReveal baseOpacity={0.08} baseRotation={2} blurStrength={5}>
-                {ABOUT.bio1}
-              </ScrollReveal>
-              <ScrollReveal baseOpacity={0.08} baseRotation={2} blurStrength={5}>
-                {ABOUT.bio2}
-              </ScrollReveal>
-            </div>
+            <Reveal className="about-bio">
+              <p>{ABOUT.bio1}</p>
+              <p>{ABOUT.bio2}</p>
+            </Reveal>
             <p className="type-line">
               currently working with{' '}
               <TextType text={ABOUT.workingWith} typingSpeed={55} deletingSpeed={30} pauseDuration={1700} className="typed" cursorCharacter="█" cursorClassName="block-cursor" />

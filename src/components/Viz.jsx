@@ -195,7 +195,61 @@ function vizMesh() {
   };
 }
 
-const factories = { market: vizMarket, curve: vizCurve, bars: vizBars, mesh: vizMesh };
+function vizLatency() {
+  const data = [];
+  function step() {
+    const base = 0.22 + Math.random() * 0.14;
+    const spike = Math.random() < 0.07 ? Math.random() * 0.5 : 0;
+    data.push(Math.min(0.95, base + spike));
+    if (data.length > 90) data.shift();
+  }
+  for (let i = 0; i < 90; i++) step();
+  let last = -1;
+  return (ctx, w, h, t, s) => {
+    const every = s.hover ? 2 : 4;
+    if (Math.floor(t / every) !== last) {
+      last = Math.floor(t / every);
+      step();
+    }
+    const pad = 18,
+      cw = w - pad * 2,
+      ch = h - pad * 2;
+    const sorted = [...data].sort((a, b) => a - b);
+    const q = p => sorted[Math.floor(p * (sorted.length - 1))];
+    const p50 = q(0.5),
+      p95 = q(0.95);
+    ctx.strokeStyle = FAINT;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad, pad + ch);
+    ctx.lineTo(pad + cw, pad + ch);
+    ctx.stroke();
+    const bw = cw / data.length;
+    data.forEach((d, i) => {
+      const x = pad + i * bw;
+      const bh = d * ch * 0.9;
+      const over = d > p95;
+      ctx.fillStyle = over ? ACCENT : d > p50 ? '#8a8a8a' : '#4f4f4f';
+      ctx.fillRect(x + bw * 0.15, pad + ch - bh, bw * 0.7, bh);
+    });
+    ctx.setLineDash([3, 5]);
+    ctx.strokeStyle = GREY;
+    const y50 = pad + ch - p50 * ch * 0.9;
+    ctx.beginPath();
+    ctx.moveTo(pad, y50);
+    ctx.lineTo(pad + cw, y50);
+    ctx.stroke();
+    ctx.strokeStyle = s.hover ? ACCENT : 'rgba(255,75,51,.55)';
+    const y95 = pad + ch - p95 * ch * 0.9;
+    ctx.beginPath();
+    ctx.moveTo(pad, y95);
+    ctx.lineTo(pad + cw, y95);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  };
+}
+
+const factories = { market: vizMarket, curve: vizCurve, bars: vizBars, mesh: vizMesh, latency: vizLatency };
 
 export default function Viz({ type = 'market' }) {
   const ref = useRef(null);
