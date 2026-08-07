@@ -249,6 +249,44 @@ h1 .line {
   animation: blink 1.1s steps(1) infinite;
 }
 
+/* staggered entrance for hero support lines (old anime.js timeline feel) */
+.hero-role,
+.hero-sub,
+.hero-cta {
+  animation: fade-up 0.9s var(--ease) both;
+}
+
+.hero-sub {
+  animation-delay: 0.55s;
+}
+
+.hero-cta {
+  animation-delay: 0.9s;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* scroll reveal (ported .reveal/.in) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
 /* ============================================================
    section headings
    ============================================================ */
@@ -305,15 +343,53 @@ section {
   min-height: 0;
 }
 
+/* accordion gallery (react-bits) — project index */
+.work-gallery {
+  margin-bottom: 56px;
+}
+
+.work-gallery .ag-panel__text {
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.work-gallery .ag-panel {
+  border: 1px solid var(--line);
+  background: var(--bg-raise);
+}
+
 .scroll-stack-card.panel {
   height: auto;
   min-height: 20rem;
   margin: 0 0 24px;
-  padding: 34px 32px;
+  padding: 0;
   border-radius: 0;
   border: 1px solid var(--line);
   background-color: var(--bg-raise);
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.55);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+/* animated canvas viz (ported from the original site) */
+.panel .viz {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--line);
+  min-height: 20rem;
+}
+
+.panel .viz canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.panel .meta {
+  padding: 30px 28px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -597,12 +673,29 @@ section {
   color: var(--dim);
   border: 1px solid var(--line);
   padding: 7px 12px;
-  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
 }
 
 .tag:hover {
   border-color: var(--accent);
   color: var(--txt);
+}
+
+/* staggered tag entrance (ported from the original site) */
+.skill-group .tag {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+  transition-delay: calc(var(--i) * 35ms);
+}
+
+.skill-group.in .tag {
+  opacity: 1;
+  transform: none;
+}
+
+.skill-group .tag:hover {
+  transition-delay: 0ms;
 }
 
 /* ============================================================
@@ -739,9 +832,19 @@ footer .wrap {
   section {
     padding: 88px 0;
   }
-  .work-grid,
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+  .scroll-stack-card.panel {
+    grid-template-columns: 1fr;
+  }
+  .panel .viz {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    min-height: 220px;
+  }
+  .work-gallery .accordion-gallery {
+    flex-direction: column;
   }
   .exp-grid {
     display: block;
@@ -781,8 +884,17 @@ footer .wrap {
   .logo .caret {
     animation: none;
   }
-  .exp-item {
+  .exp-item,
+  .hero-role,
+  .hero-sub,
+  .hero-cta {
     animation: none;
+  }
+  .reveal,
+  .skill-group .tag {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
   .dotgrid-bg {
     display: none;

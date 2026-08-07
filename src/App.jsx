@@ -1,17 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import DotGrid from './components/DotGrid';
 import TargetCursor from './components/TargetCursor';
 import ClickSpark from './components/ClickSpark';
 import DecryptedText from './components/DecryptedText';
 import GlitchText from './components/GlitchText';
 import TextType from './components/TextType';
+import SplitText from './components/SplitText';
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack';
 import ScrollFloat from './components/ScrollFloat';
 import ScrollVelocity from './components/ScrollVelocity';
 import ScrollReveal from './components/ScrollReveal';
+import AccordionGallery from './components/AccordionGallery';
+import Viz from './components/Viz';
 import { PROFILE, WORK, EXPERIENCE, SKILLS, ABOUT } from './data';
 
 const ACCENT = '#ff4b33';
+
+// scroll-reveal fade-up, ported from the original site's .reveal/.in pattern
+function Reveal({ children, className = '' }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          el.classList.add('in');
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={`reveal ${className}`.trim()}>
+      {children}
+    </div>
+  );
+}
 
 const TICKER_ROWS = [
   'python / typescript / go / swift / rust / c++ / sql / java / ',
@@ -131,12 +158,24 @@ export default function App() {
       <main id="top">
         <header className="hero">
           <div className="wrap">
-            <p className="hero-role">{PROFILE.role}</p>
+            <p className="hero-role">
+              <DecryptedText text={PROFILE.role} animateOn="view" sequential speed={30} />
+            </p>
             <h1 aria-label="Adith Gangalakunta">
-              {PROFILE.name.map(line => (
-                <span className="line" key={line}>
-                  <DecryptedText text={line} animateOn="view" sequential speed={55} characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&" />
-                </span>
+              {PROFILE.name.map((line, i) => (
+                <SplitText
+                  key={line}
+                  text={line}
+                  tag="span"
+                  className="line"
+                  splitType="chars"
+                  delay={40 + i * 10}
+                  duration={1.1}
+                  ease="power4.out"
+                  from={{ opacity: 0, y: 90, rotate: 3 }}
+                  to={{ opacity: 1, y: 0, rotate: 0 }}
+                  textAlign="left"
+                />
               ))}
             </h1>
             <div className="hero-sub">
@@ -151,6 +190,20 @@ export default function App() {
         <section id="work">
           <div className="wrap">
             <SecHead num="01" title="selected work" />
+            <Reveal className="work-gallery">
+              <AccordionGallery
+                items={WORK.map(w => ({ image: w.gallery, label: w.name.toLowerCase(), link: w.links[0].href }))}
+                defaultIndex={0}
+                accentColor={ACCENT}
+                overlayColor="#0d0d0d"
+                textColor="#f4f4f4"
+                height={430}
+                gap={8}
+                radius={0}
+                expandRatio={0.55}
+                grayscale={false}
+              />
+            </Reveal>
             <ScrollStack
               useWindowScroll
               itemDistance={60}
@@ -161,21 +214,24 @@ export default function App() {
             >
               {WORK.map((w, i) => (
                 <ScrollStackItem key={w.name} itemClassName="panel">
-                  <span className="panel-idx">{String(i + 1).padStart(2, '0')}</span>
-                  <h3>{w.name}</h3>
-                  <span className="stack">{w.stack}</span>
-                  <p>{w.desc}</p>
-                  <div className="stat">
-                    {w.stat.map(s => (
-                      <span key={s}>{s}</span>
-                    ))}
-                  </div>
-                  <div className="links">
-                    {w.links.map(l => (
-                      <a key={l.label} className="cursor-target" href={l.href} target="_blank" rel="noopener noreferrer">
-                        {l.label}
-                      </a>
-                    ))}
+                  <Viz type={w.viz} />
+                  <div className="meta">
+                    <span className="panel-idx">{String(i + 1).padStart(2, '0')}</span>
+                    <h3>{w.name}</h3>
+                    <span className="stack">{w.stack}</span>
+                    <p>{w.desc}</p>
+                    <div className="stat">
+                      {w.stat.map(s => (
+                        <span key={s}>{s}</span>
+                      ))}
+                    </div>
+                    <div className="links">
+                      {w.links.map(l => (
+                        <a key={l.label} className="cursor-target" href={l.href} target="_blank" rel="noopener noreferrer">
+                          {l.label}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </ScrollStackItem>
               ))}
@@ -195,19 +251,19 @@ export default function App() {
           <div className="wrap">
             <div className="skills-grid">
               {SKILLS.map(sk => (
-                <div className="skill-group" key={sk.group}>
+                <Reveal className="skill-group" key={sk.group}>
                   <h3>
                     <b>&gt;</b>
                     {sk.group}
                   </h3>
                   <div className="skill-tags">
-                    {sk.items.map(i => (
-                      <span className="tag" key={i}>
-                        {i}
+                    {sk.items.map((item, idx) => (
+                      <span className="tag" style={{ '--i': idx }} key={item}>
+                        {item}
                       </span>
                     ))}
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -232,7 +288,7 @@ export default function App() {
         </section>
 
         <section id="contact" className="contact">
-          <div className="wrap">
+          <Reveal className="wrap">
             <span className="num">05</span>
             <h2>
               <GlitchText speed={0.8} enableOnHover className="contact-glitch">
@@ -247,7 +303,7 @@ export default function App() {
               <a className="cursor-target" href={PROFILE.links.linkedin} target="_blank" rel="noopener noreferrer">linkedin</a>
               <a className="cursor-target" href={PROFILE.links.devpost} target="_blank" rel="noopener noreferrer">devpost</a>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
 
