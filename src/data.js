@@ -31,6 +31,7 @@ export const EXPERIENCE = [
     when: 'Nov 2025 – Present',
     role: 'Co-Founder & Engineer',
     org: 'Shake',
+    link: 'https://getshake.app',
     loc: 'Remote',
     points: [
       'Built a real-money social prediction-markets iOS app in Swift/SwiftUI: user-created markets priced by a custom LSMR automated market maker, friend wagers, and a Polymarket-style price chart.',

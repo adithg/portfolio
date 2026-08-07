@@ -95,7 +95,16 @@ export default function App() {
               <div className="xp-head">
                 <div>
                   <span className="xp-role">{xp.role}</span>
-                  <span className="xp-org"> · {xp.org}</span>
+                  <span className="xp-org">
+                    {' · '}
+                    {xp.link ? (
+                      <a href={xp.link} target="_blank" rel="noreferrer">
+                        {xp.org} ↗
+                      </a>
+                    ) : (
+                      xp.org
+                    )}
+                  </span>
                 </div>
                 <div className="xp-meta">
                   {xp.when} · {xp.loc}
