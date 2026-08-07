@@ -1,18 +1,24 @@
 {
   "name": "adith-portfolio",
-  "version": "1.0.0",
-  "description": "Adith Gangalakunta's personal portfolio — Swiss minimalism design",
-  "main": "index.html",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "python -m http.server 3000",
-    "build": "echo 'Static site — no build step needed'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [
-    "portfolio",
-    "software-engineer",
-    "ai-ml",
-    "full-stack"
-  ],
-  "author": "Adith Gangalakunta",
-  "license": "MIT"
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.13.0",
+    "motion": "^12.23.12",
+    "ogl": "^1.0.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "shadcn": "^4.16.2",
+    "vite": "^6.3.5"
+  }
 }
