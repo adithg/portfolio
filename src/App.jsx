@@ -6,7 +6,6 @@ import DecryptedText from './components/DecryptedText';
 import GlitchText from './components/GlitchText';
 import TextType from './components/TextType';
 import SplitText from './components/SplitText';
-import ScrollStack, { ScrollStackItem } from './components/ScrollStack';
 import ScrollFloat from './components/ScrollFloat';
 import ScrollVelocity from './components/ScrollVelocity';
 import PixelCard from './components/PixelCard';
@@ -189,16 +188,10 @@ export default function App() {
         <section id="work">
           <div className="wrap">
             <SecHead num="01" title="selected work" />
-            <ScrollStack
-              useWindowScroll
-              itemDistance={60}
-              itemStackDistance={26}
-              stackPosition="16%"
-              scaleEndPosition="8%"
-              baseScale={0.88}
-            >
+            {/* pure-CSS sticky stacking: cards pile up as you scroll, no JS */}
+            <div className="work-stack">
               {WORK.map((w, i) => (
-                <ScrollStackItem key={w.name} itemClassName="panel cursor-target">
+                <article key={w.name} className="panel stack-card cursor-target" style={{ '--i': i }}>
                   <Viz type={w.viz} />
                   <div className="meta">
                     <span className="panel-idx">{String(i + 1).padStart(2, '0')}</span>
@@ -218,9 +211,9 @@ export default function App() {
                       ))}
                     </div>
                   </div>
-                </ScrollStackItem>
+                </article>
               ))}
-            </ScrollStack>
+            </div>
           </div>
         </section>
 
@@ -237,7 +230,7 @@ export default function App() {
             <div className="skills-grid">
               {SKILLS.map(sk => (
                 <Reveal key={sk.group}>
-                  <PixelCard className="skill-group" gap={6} speed={30} colors="#242424,#4f4f4f,#ff4b33" noFocus>
+                  <PixelCard className="skill-group" gap={7} speed={22} colors="#1d1d1d,#333333,#ff4b33" noFocus>
                     <div className="skill-inner">
                       <h3>
                         <b>&gt;</b>

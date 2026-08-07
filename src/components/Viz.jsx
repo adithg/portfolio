@@ -266,7 +266,7 @@ export default function Viz({ type = 'market' }) {
       raf = null,
       visible = false;
     const state = { hover: false };
-    const card = container.closest('.scroll-stack-card') || container;
+    const card = container.closest('.stack-card') || container;
     const enter = () => (state.hover = true);
     const leave = () => (state.hover = false);
     card.addEventListener('mouseenter', enter);

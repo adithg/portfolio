@@ -20,10 +20,8 @@
   box-sizing: border-box;
 }
 
-/* no CSS smooth scrolling — Lenis (via ScrollStack useWindowScroll) drives
-   window scrolling, and the two fight if both try to animate the same scroll */
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 ::selection {
@@ -331,24 +329,20 @@ section {
 }
 
 /* ============================================================
-   01 work (react-bits ScrollStack — cards pin and stack on scroll)
+   01 work — CSS sticky stacking: cards pile up as you scroll
    ============================================================ */
-#work .scroll-stack-scroller {
-  overflow: visible;
-  height: auto;
+.work-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-bottom: 6vh;
 }
 
-#work .scroll-stack-inner {
-  padding: 0 0 14vh;
-  min-height: 0;
-}
-
-.scroll-stack-card.panel {
-  height: auto;
+.stack-card.panel {
+  position: sticky;
+  top: calc(88px + var(--i, 0) * 26px);
   min-height: 20rem;
-  margin: 0 0 24px;
   padding: 0;
-  border-radius: 0;
   border: 1px solid var(--line);
   background-color: var(--bg-raise);
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.55);
@@ -653,6 +647,7 @@ section {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  opacity: 0.3;
 }
 
 .skill-inner {
@@ -848,8 +843,9 @@ footer .wrap {
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  .scroll-stack-card.panel {
+  .stack-card.panel {
     grid-template-columns: 1fr;
+    position: static;
   }
   .panel .viz {
     border-right: 0;
