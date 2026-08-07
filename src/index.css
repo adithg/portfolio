@@ -20,8 +20,10 @@
   box-sizing: border-box;
 }
 
+/* no CSS smooth scrolling — Lenis (via ScrollStack useWindowScroll) drives
+   window scrolling, and the two fight if both try to animate the same scroll */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 ::selection {
@@ -75,7 +77,7 @@ button {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 0.8;
 }
 
 main,
@@ -267,11 +269,21 @@ section {
   font-weight: 500;
 }
 
-.sec-head h2 {
+/* section titles use react-bits ScrollFloat (renders its own h2) */
+.sec-head .scroll-float {
+  overflow: hidden;
+  margin: 0;
+}
+
+.sec-head .scroll-float-text {
+  font-family: var(--mono);
   font-size: clamp(24px, 3.4vw, 38px);
   font-weight: 800;
   letter-spacing: -0.02em;
   text-transform: lowercase;
+  text-align: left;
+  line-height: 1.25;
+  color: var(--txt);
 }
 
 .sec-head .rule {
@@ -281,31 +293,30 @@ section {
 }
 
 /* ============================================================
-   01 work (react-bits SpotlightCard panels)
+   01 work (react-bits ScrollStack — cards pin and stack on scroll)
    ============================================================ */
-.work-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+#work .scroll-stack-scroller {
+  overflow: visible;
+  height: auto;
 }
 
-.panel.card-spotlight {
+#work .scroll-stack-inner {
+  padding: 0 0 14vh;
+  min-height: 0;
+}
+
+.scroll-stack-card.panel {
+  height: auto;
+  min-height: 20rem;
+  margin: 0 0 24px;
+  padding: 34px 32px;
   border-radius: 0;
   border: 1px solid var(--line);
   background-color: var(--bg-raise);
-  padding: 30px 28px;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.55);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: border-color 0.35s var(--ease);
-}
-
-.panel.card-spotlight:hover {
-  border-color: #3d3d3d;
-}
-
-.work-grid .panel:first-child {
-  grid-column: 1 / -1;
 }
 
 .panel-idx {
@@ -513,8 +524,42 @@ section {
 }
 
 /* ============================================================
-   03 skills
+   03 skills (react-bits ScrollVelocity ticker + groups)
    ============================================================ */
+.ticker {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+  margin-bottom: 64px;
+}
+
+.ticker .scroller {
+  font-family: var(--mono);
+  font-size: clamp(22px, 3.2vw, 44px);
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--dim);
+  filter: none;
+}
+
+.ticker .parallax + .parallax {
+  margin-top: 10px;
+}
+
+.ticker .parallax:nth-child(2) .scroller {
+  color: var(--dimmer);
+  -webkit-text-stroke: 1px var(--dimmer);
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .ticker .scroller {
+    font-size: clamp(22px, 3.2vw, 44px);
+    line-height: 1.3;
+  }
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -561,16 +606,22 @@ section {
 }
 
 /* ============================================================
-   04 about
+   04 about (react-bits ScrollReveal)
    ============================================================ */
-.about-bio {
-  font-size: 15px;
-  color: var(--dim);
-  max-width: 62ch;
+.about-reveal {
+  max-width: 68ch;
 }
 
-.about-bio p + p {
-  margin-top: 18px;
+.about-reveal .scroll-reveal {
+  margin: 0 0 22px;
+}
+
+.about-reveal .scroll-reveal-text {
+  font-family: var(--mono);
+  font-size: clamp(16px, 2vw, 23px);
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--txt);
 }
 
 .type-line {

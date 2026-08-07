@@ -5,18 +5,26 @@ import ClickSpark from './components/ClickSpark';
 import DecryptedText from './components/DecryptedText';
 import GlitchText from './components/GlitchText';
 import TextType from './components/TextType';
-import SpotlightCard from './components/SpotlightCard';
+import ScrollStack, { ScrollStackItem } from './components/ScrollStack';
+import ScrollFloat from './components/ScrollFloat';
+import ScrollVelocity from './components/ScrollVelocity';
+import ScrollReveal from './components/ScrollReveal';
 import { PROFILE, WORK, EXPERIENCE, SKILLS, ABOUT } from './data';
 
 const ACCENT = '#ff4b33';
+
+const TICKER_ROWS = [
+  'python / typescript / go / swift / rust / c++ / sql / java / ',
+  'pytorch / langchain / pinecone / supabase / docker / kubernetes / aws / gcp / ',
+];
 
 function SecHead({ num, title }) {
   return (
     <div className="sec-head">
       <span className="num">{num}</span>
-      <h2>
-        <DecryptedText text={title} animateOn="view" sequential speed={40} />
-      </h2>
+      <ScrollFloat containerClassName="sec-float" textClassName="sec-float-text" stagger={0.02}>
+        {title}
+      </ScrollFloat>
       <span className="rule" />
     </div>
   );
@@ -115,7 +123,7 @@ export default function App() {
     <ClickSpark sparkColor={ACCENT} sparkSize={9} sparkRadius={18} sparkCount={8} duration={420}>
       {finePointer && <TargetCursor targetSelector=".cursor-target" cursorColor="#f4f4f4" cursorColorOnTarget={ACCENT} spinDuration={4} />}
       <div className="dotgrid-bg" aria-hidden="true">
-        <DotGrid dotSize={3} gap={28} baseColor="#1d1d1d" activeColor={ACCENT} proximity={130} shockRadius={220} shockStrength={4} />
+        <DotGrid dotSize={4} gap={26} baseColor="#3a3a3a" activeColor={ACCENT} proximity={170} shockRadius={260} shockStrength={6} />
       </div>
 
       <Nav />
@@ -143,9 +151,16 @@ export default function App() {
         <section id="work">
           <div className="wrap">
             <SecHead num="01" title="selected work" />
-            <div className="work-grid">
+            <ScrollStack
+              useWindowScroll
+              itemDistance={60}
+              itemStackDistance={26}
+              stackPosition="16%"
+              scaleEndPosition="8%"
+              baseScale={0.88}
+            >
               {WORK.map((w, i) => (
-                <SpotlightCard key={w.name} className="panel cursor-target" spotlightColor="rgba(255, 75, 51, 0.12)">
+                <ScrollStackItem key={w.name} itemClassName="panel">
                   <span className="panel-idx">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{w.name}</h3>
                   <span className="stack">{w.stack}</span>
@@ -157,14 +172,14 @@ export default function App() {
                   </div>
                   <div className="links">
                     {w.links.map(l => (
-                      <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
+                      <a key={l.label} className="cursor-target" href={l.href} target="_blank" rel="noopener noreferrer">
                         {l.label}
                       </a>
                     ))}
                   </div>
-                </SpotlightCard>
+                </ScrollStackItem>
               ))}
-            </div>
+            </ScrollStack>
           </div>
         </section>
 
@@ -173,6 +188,11 @@ export default function App() {
         <section id="skills">
           <div className="wrap">
             <SecHead num="03" title="skills" />
+          </div>
+          <div className="ticker">
+            <ScrollVelocity texts={TICKER_ROWS} velocity={55} numCopies={8} />
+          </div>
+          <div className="wrap">
             <div className="skills-grid">
               {SKILLS.map(sk => (
                 <div className="skill-group" key={sk.group}>
@@ -196,9 +216,13 @@ export default function App() {
         <section id="about">
           <div className="wrap">
             <SecHead num="04" title="about" />
-            <div className="about-bio">
-              <p>{ABOUT.bio1}</p>
-              <p>{ABOUT.bio2}</p>
+            <div className="about-reveal">
+              <ScrollReveal baseOpacity={0.08} baseRotation={2} blurStrength={5}>
+                {ABOUT.bio1}
+              </ScrollReveal>
+              <ScrollReveal baseOpacity={0.08} baseRotation={2} blurStrength={5}>
+                {ABOUT.bio2}
+              </ScrollReveal>
             </div>
             <p className="type-line">
               currently working with{' '}
